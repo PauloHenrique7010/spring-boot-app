@@ -3,7 +3,7 @@ create database spring;
 
 use spring;
 
-create user 'user'@'localhost' codentified by 'pass123';
+create user 'user'@'localhost' identified by 'pass123';
 
 grant select, insert, delete, update on spring.* to user@'localhost';
 
