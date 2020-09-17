@@ -16,6 +16,8 @@ import br.gov.sp.fatec.sprintbootapp.repository.AutorizacaoRepository;
 import br.gov.sp.fatec.sprintbootapp.repository.UsuarioRepository;
 
 @SpringBootTest
+@Transactional
+@Rollback
 class SprintBootAppApplicationTests {
 
     @Autowired
