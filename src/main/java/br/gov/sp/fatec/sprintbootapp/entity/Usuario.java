@@ -4,8 +4,6 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.ManyToAny;
-
 @Entity
 @Table(name = "usuario")
 public class Usuario {

@@ -16,8 +16,8 @@ import br.gov.sp.fatec.sprintbootapp.repository.AutorizacaoRepository;
 import br.gov.sp.fatec.sprintbootapp.repository.UsuarioRepository;
 
 @SpringBootTest
-@Transactional
-@Rollback
+/*@Transactional
+@Rollback*/
 class SprintBootAppApplicationTests {
 
     @Autowired
@@ -32,15 +32,21 @@ class SprintBootAppApplicationTests {
     
     @Test
     void testaInsercao(){
+        /*Usuario usuario = new Usuario();
+        usuario.setNome("Mais uma");
+        usuario.setSenha("senha");
+        usuarioRepo.save(usuario);
+        assertNotNull(usuario.getId());*/
+
         Usuario usuario = new Usuario();
-        usuario.setNome("Segundo usuário3");
+        usuario.setNome("Ultimo");
         usuario.setSenha("senha");
         usuario.setAutorizacoes(new HashSet<Autorizacao>());
         Autorizacao aut = new Autorizacao();
-        aut.setNome("Admin2");
+        aut.setNome("Admin3");
         autorizacaoRepo.save(aut);
         usuario.getAutorizacoes().add(aut);
-        usuarioRepo.save(usuario);
+        usuarioRepo.save(usuario);        
         assertNotNull(usuario.getAutorizacoes().iterator().next().getId());
     }
 
@@ -51,11 +57,11 @@ class SprintBootAppApplicationTests {
 
     }
 
-    @Test
+   /* @Test
     void testaUsuario(){
         Autorizacao aut = autorizacaoRepo.findById(1L).get();
         assertEquals("Primeiro Usuario", aut.getUsuarios().iterator().next().getNome());
-    }
+    }*/
 
 
 
