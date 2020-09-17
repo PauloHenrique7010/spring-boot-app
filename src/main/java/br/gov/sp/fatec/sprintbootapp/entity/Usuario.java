@@ -1,11 +1,10 @@
 package br.gov.sp.fatec.sprintbootapp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Set;
+
+import javax.persistence.*;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "usuario")
@@ -21,6 +20,13 @@ public class Usuario {
 
     @Column(name = "senha")
     private String senha;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_autorizacao",
+                joinColumns = {@JoinColumn(name = "cod_usuario")},
+                inverseJoinColumns = {@JoinColumn(name = "cod_aut")}
+                )
+    private Set<Autorizacao> autorizacoes;
 
     public Long getId(){
         return this.id;
@@ -44,6 +50,14 @@ public class Usuario {
 
     public void setSenha(String senha){
         this.senha = senha;
+    }
+
+    public Set<Autorizacao> getAutorizacoes(){
+        return this.autorizacoes;
+    }
+
+    public void setAutorizacoes(Set<Autorizacao> autorizacoes){
+        this.autorizacoes = autorizacoes;
     }
     
 }

@@ -29,3 +29,7 @@ create table usuario_autorizacao(
 	foreign key usuario_fk (cod_usuario) references usuario (cod_usuario),
 	foreign key aut_fk (cod_aut) references autorizacao (cod_aut)
 );
+
+insert into usuario (nome, senha) values ('Primeiro Usuario', '123');
+insert into autorizacao (aut_nome) values ('Admin');
+insert into usuario_autorizacao values (1,1);
