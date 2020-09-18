@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -51,6 +52,28 @@ class SprintBootAppApplicationTests {
     }
 
     @Test
+    void testaInsercaoAutorizacao(){
+        /*Usuario usuario = new Usuario();
+        usuario.setNome("Mais uma");
+        usuario.setSenha("senha");
+        usuarioRepo.save(usuario);
+        assertNotNull(usuario.getId());*/
+
+        Usuario usuario = new Usuario();
+        usuario.setNome("Usuario2");
+        usuario.setSenha("senha");
+        usuarioRepo.save(usuario);        
+
+        Autorizacao aut = new Autorizacao();
+        aut.setNome("Admin4");
+        aut.setUsuarios(new HashSet<Usuario>());
+        aut.getUsuarios().add(usuario);
+        autorizacaoRepo.save(aut);                
+        assertNotNull(aut.getUsuarios().iterator().next().getId());
+    }
+
+
+    /*@Test
     void testaAutorizacao(){
         Usuario usuario = usuarioRepo.findById(1L).get();
         assertEquals("Admin", usuario.getAutorizacoes().iterator().next().getNome());
@@ -63,6 +86,23 @@ class SprintBootAppApplicationTests {
         assertEquals("Primeiro Usuario", aut.getUsuarios().iterator().next().getNome());
     }*/
 
+    /*@Test
+    void testaBuscaUsuarioNomeContains(){
+        List<Usuario> usuarios = usuarioRepo.findByNomeContainsIgnoreCase("Usuario");
+        assertFalse(usuarios.isEmpty());
+    }
+
+    @Test
+    void testaBuscaUsuarioNomeQuery(){
+        Usuario usuario = usuarioRepo.buscaPorNome("Ultimo");
+        assertNotNull(usuario);
+    }
+
+    @Test
+    void testaBuscaUsuarioNomeSenhaQuery(){
+        Usuario usuario = usuarioRepo.buscaPorNomESenha("Ultimo","senha");
+        assertNotNull(usuario);
+    }*/
 
 
 }
