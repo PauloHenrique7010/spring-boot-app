@@ -15,6 +15,7 @@ import br.gov.sp.fatec.sprintbootapp.entity.Autorizacao;
 import br.gov.sp.fatec.sprintbootapp.entity.Usuario;
 import br.gov.sp.fatec.sprintbootapp.repository.AutorizacaoRepository;
 import br.gov.sp.fatec.sprintbootapp.repository.UsuarioRepository;
+import br.gov.sp.fatec.sprintbootapp.servico.SegurancaService;
 
 @SpringBootTest
 /*@Transactional
@@ -27,10 +28,13 @@ class SprintBootAppApplicationTests {
     @Autowired
     private AutorizacaoRepository autorizacaoRepo;
 
+    @Autowired
+    private SegurancaService segService;
+
 	@Test
 	void contextLoads() {
     }
-    
+    /*
     @Test
     void testaInsercao(){
         /*Usuario usuario = new Usuario();
@@ -38,7 +42,7 @@ class SprintBootAppApplicationTests {
         usuario.setSenha("senha");
         usuarioRepo.save(usuario);
         assertNotNull(usuario.getId());*/
-
+/*
         Usuario usuario = new Usuario();
         usuario.setNome("Ultimo");
         usuario.setSenha("senha");
@@ -49,16 +53,16 @@ class SprintBootAppApplicationTests {
         usuario.getAutorizacoes().add(aut);
         usuarioRepo.save(usuario);        
         assertNotNull(usuario.getAutorizacoes().iterator().next().getId());
-    }
+    }*/
 
-    @Test
+    /*@Test
     void testaInsercaoAutorizacao(){
         /*Usuario usuario = new Usuario();
         usuario.setNome("Mais uma");
         usuario.setSenha("senha");
         usuarioRepo.save(usuario);
         assertNotNull(usuario.getId());*/
-
+/*
         Usuario usuario = new Usuario();
         usuario.setNome("Usuario2");
         usuario.setSenha("senha");
@@ -71,7 +75,7 @@ class SprintBootAppApplicationTests {
         autorizacaoRepo.save(aut);                
         assertNotNull(aut.getUsuarios().iterator().next().getId());
     }
-
+*/
 
     /*@Test
     void testaAutorizacao(){
@@ -103,6 +107,14 @@ class SprintBootAppApplicationTests {
         Usuario usuario = usuarioRepo.buscaPorNomESenha("Ultimo","senha");
         assertNotNull(usuario);
     }*/
+
+    @Test
+    void testServicoCriaUsuario(){
+        Usuario usuario = segService.criarUsuario("Um usuario qualquer1", "uma senha", "Novo Admin1");
+        assertNotNull(usuario);
+    }
+
+
 
 
 }
